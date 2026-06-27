@@ -1,0 +1,13 @@
+[Unit]
+Description=SOC AI Inference Service
+After=network.target
+
+[Service]
+User=azureuser
+WorkingDirectory=/opt/ai_service
+ExecStart=/usr/bin/python3 /opt/ai_service/app.py
+Restart=always
+RestartSec=5
+
+[Install]
+WantedBy=multi-user.target

@@ -1,0 +1,53 @@
+<group name="local,soc_project,">
+
+  <rule id="100001" level="12">
+    <if_matched_sid>31103</if_matched_sid>
+    <same_source_ip/>
+    <description>DDoS: HTTP flood detected from same source IP</description>
+    <mitre><id>T1498</id></mitre>
+    <group>ddos,high_priority,</group>
+  </rule>
+
+  <rule id="100002" level="12">
+    <if_sid>1002</if_sid>
+    <match>SYN flood</match>
+    <description>DDoS: SYN flood detected via kernel netfilter log</description>
+    <mitre><id>T1498.001</id></mitre>
+    <group>ddos,high_priority,</group>
+  </rule>
+
+  <rule id="100003" level="13">
+    <if_sid>554</if_sid>
+    <field name="file">/tmp/</field>
+    <description>Malware: executable file created in /tmp directory</description>
+    <mitre><id>T1059</id></mitre>
+    <group>malware,high_priority,</group>
+  </rule>
+
+  <rule id="100004" level="14">
+    <if_sid>5710</if_sid>
+    <match>Failed password</match>
+    <same_source_ip/>
+    <description>Malware: brute force followed by auth success</description>
+    <mitre><id>T1078</id></mitre>
+    <group>malware,critical,</group>
+  </rule>
+
+  <rule id="100005" level="10">
+    <if_sid>31103</if_sid>
+    <url>/track</url>
+    <description>Social Engineering: phishing link clicked</description>
+    <mitre><id>T1566.002</id></mitre>
+    <group>phishing,medium_priority,</group>
+  </rule>
+
+  <rule id="100006" level="11">
+    <if_sid>31103</if_sid>
+    <url>/login</url>
+    <match>POST</match>
+    <description>Social Engineering: credential submission on phishing page</description>
+    <mitre><id>T1566.002</id></mitre>
+    <group>phishing,high_priority,</group>
+  </rule>
+
+</group>
